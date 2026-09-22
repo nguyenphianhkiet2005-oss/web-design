@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LedgerLab | Banking Database Demo</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="topbar">
+        <a class="brand" href="#top">LedgerLab <span>MySQL Demo</span></a>
+        <a class="back-link" href="../../home.html">KNCS Portfolio</a>
+    </header>
+
+    <main id="top" class="shell">
+        <section class="intro">
+            <p class="eyebrow">PORTFOLIO DATABASE PROJECT</p>
+            <h1>Banking data, designed for trust.</h1>
+            <p class="lede">A fictional banking dashboard backed by a relational MySQL design with account balances, atomic transfers, indexes, and an audit trail.</p>
+            <div class="status"><span></span> Demo environment · fictional data only</div>
+        </section>
+
+        <section class="metrics" aria-label="Account metrics">
+            <article><span>Total assets</span><strong id="total-assets">$0.00</strong><small>Across demo accounts</small></article>
+            <article><span>Active accounts</span><strong id="active-accounts">0</strong><small>Checking and savings</small></article>
+            <article><span>Transactions</span><strong id="transaction-count">0</strong><small>Audit-ready activity</small></article>
+        </section>
+
+        <section class="workspace">
+            <div class="panel accounts-panel">
+                <div class="panel-heading"><div><p class="eyebrow">ACCOUNT DIRECTORY</p><h2>Customer accounts</h2></div><span class="chip">MySQL view</span></div>
+                <div class="table-wrap"><table><thead><tr><th>Customer</th><th>Type</th><th>Account</th><th>Balance</th><th>Status</th></tr></thead><tbody id="account-rows"></tbody></table></div>
+            </div>
+            <aside class="panel activity-panel">
+                <div class="panel-heading"><div><p class="eyebrow">AUDIT TRAIL</p><h2>Recent activity</h2></div><span class="live-dot">LIVE DEMO</span></div>
+                <div id="activity-list" class="activity-list"></div>
+            </aside>
+        </section>
+
+        <section class="architecture">
+            <div><p class="eyebrow">DATA MODEL</p><h2>A small schema with serious habits.</h2></div>
+            <div class="schema-grid"><span>customers</span><i>1 : N</i><span>accounts</span><i>1 : N</i><span>transactions</span><i>1 : N</i><span>audit_log</span></div>
+        </section>
+    </main>
+    <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact & Feedback | KNCS - Phi Anh Kiet Nguyen</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <a class="logo" href="home.html" aria-label="KNCS Home">
+            <img src="imagines/logo/originalmodi.jpg" alt="KNCS logo">
+            <span>KNCS</span>
+        </a>
+        <ul class="nav-links">
+            <li><a href="home.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="projects.html">Projects</a></li>
+            <li><a href="certifications.html">Certifications</a></li>
+            <li><a href="contact.html" class="active">Contact & Feedback</a></li>
+        </ul>
+    </nav>
+
+    <!-- Header -->
+    <header class="hero-section">
+        <div class="hero-content">
+            <h1>Contact & Feedback</h1>
+            <p class="subtitle">Get in touch with me or leave feedback on my portfolio website.</p>
+        </div>
+    </header>
+
+    <!-- Main Content-->
+    <main class="content-container">
+        <section class="form-section">
+            <h2>Send a Message / Leave Feedback</h2>
+            <p>Please fill out the form below to send your feedback directly via email.</p>
+
+            <!-- VCCS email -->
+            <form action="mailto:pn42029@email.vccs.edu" method="post" enctype="text/plain" class="feedback-form">
+                
+                <!-- Full Name -->
+                <div class="form-group">
+                    <label for="fullName">Full Name:</label>
+                    <input type="text" id="fullName" name="Full Name" placeholder="Enter your full name" required>
+                </div>
+
+                <!--  Email Address -->
+                <div class="form-group">
+                    <label for="email">Email Address:</label>
+                    <input type="email" id="email" name="Email Address" placeholder="Enter your email" required>
+                </div>
+
+                <!--  Subject / Topic Selection -->
+                <div class="form-group">
+                    <label for="subject">Feedback Topic:</label>
+                    <select id="subject" name="Topic">
+                        <option value="General Inquiry">General Inquiry</option>
+                        <option value="Website Feedback">Website Feedback</option>
+                        <option value="Project Collaboration">Project Collaboration</option>
+                    </select>
+                </div>
+
+                <!--  Message -->
+                <div class="form-group">
+                    <label for="message">Your Message / Feedback:</label>
+                    <textarea id="message" name="Message" rows="5" placeholder="Write your message here..." required></textarea>
+                </div>
+
+                <!-- Submit-->
+                <button type="submit" class="btn btn-primary">Submit Feedback</button>
+            </form>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Phi Anh Kiet Nguyen | <a href="#">LinkedIn</a> | <a href="https://github.com/nguyenphianhkiet2005-oss/kncs-portfolio" target="_blank" rel="noopener">GitHub</a> | <a href="contact.html">Contact & Feedback</a></p>
+    </footer>
+
+</body>
+</html>
