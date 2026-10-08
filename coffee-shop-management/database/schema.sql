@@ -84,6 +84,20 @@ CREATE TABLE IF NOT EXISTS order_items (
     CONSTRAINT chk_order_items_price CHECK (unit_price >= 0)
 ) ENGINE=InnoDB;
 
+CREATE TABLE IF NOT EXISTS order_status_history (
+    history_id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
+    order_id BIGINT UNSIGNED NOT NULL,
+    previous_status ENUM('Pending', 'Preparing', 'Ready', 'Completed', 'Cancelled') NULL,
+    new_status ENUM('Pending', 'Preparing', 'Ready', 'Completed', 'Cancelled') NOT NULL,
+    changed_by VARCHAR(100) NOT NULL DEFAULT 'local staff',
+    changed_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    PRIMARY KEY (history_id),
+    KEY idx_order_status_history (order_id, changed_at),
+    CONSTRAINT fk_order_status_history_order
+        FOREIGN KEY (order_id) REFERENCES orders (order_id)
+        ON UPDATE CASCADE ON DELETE CASCADE
+) ENGINE=InnoDB;
+
 CREATE OR REPLACE VIEW v_order_totals AS
 SELECT
     o.order_id,

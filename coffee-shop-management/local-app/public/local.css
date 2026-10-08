@@ -1,0 +1,7 @@
+.stock-note { display: block; margin-top: 8px; color: var(--muted); font-size: .68rem; }
+.stock-note.is-low { color: #a54a35; font-weight: 700; }
+.menu-card.is-sold-out { opacity: .62; }
+.menu-card.is-sold-out .add-button { cursor: not-allowed; }
+.local-order-note { padding: 10px 12px; border-radius: 6px; background: #f2eee6; color: var(--muted); font-size: .76rem; }
+.order-history-total { color: var(--coffee-dark); font-weight: 750; }
+.notice.is-error { border-color: #e0b5a8; background: #fff2ed; color: #8a3725; }

@@ -1,4 +1,4 @@
--- Sample menu and fictional orders for Daily Grind.
+-- Sample menu for Daily Grind.
 -- Safe to run more than once; existing sample rows are left unchanged.
 
 USE daily_grind;
@@ -23,32 +23,3 @@ FROM (
     UNION ALL SELECT 'TEA-002', 'House lemonade', 'Fresh lemon, a little sweetness.', 3.75, 40, 10, 'Tea & more'
 ) AS seed
 JOIN categories AS c ON c.category_name = seed.category_name;
-
-INSERT IGNORE INTO orders (order_number, customer_name, order_type, order_status, ordered_at) VALUES
-    ('DEMO-1001', 'Jordan Lee', 'Pickup', 'Completed', CURRENT_TIMESTAMP - INTERVAL 2 HOUR),
-    ('DEMO-1002', 'Taylor Morgan', 'Dine-in', 'Preparing', CURRENT_TIMESTAMP - INTERVAL 20 MINUTE),
-    ('DEMO-1003', 'Casey Nguyen', 'Pickup', 'Pending', CURRENT_TIMESTAMP - INTERVAL 5 MINUTE);
-
-INSERT IGNORE INTO order_items (order_id, product_id, product_name_at_sale, quantity, unit_price)
-SELECT o.order_id, p.product_id, p.product_name, 2, p.price
-FROM orders AS o
-JOIN products AS p ON p.sku = 'ESP-002'
-WHERE o.order_number = 'DEMO-1001';
-
-INSERT IGNORE INTO order_items (order_id, product_id, product_name_at_sale, quantity, unit_price)
-SELECT o.order_id, p.product_id, p.product_name, 1, p.price
-FROM orders AS o
-JOIN products AS p ON p.sku = 'CLD-001'
-WHERE o.order_number = 'DEMO-1001';
-
-INSERT IGNORE INTO order_items (order_id, product_id, product_name_at_sale, quantity, unit_price)
-SELECT o.order_id, p.product_id, p.product_name, 1, p.price
-FROM orders AS o
-JOIN products AS p ON p.sku = 'ESP-004'
-WHERE o.order_number = 'DEMO-1002';
-
-INSERT IGNORE INTO order_items (order_id, product_id, product_name_at_sale, quantity, unit_price)
-SELECT o.order_id, p.product_id, p.product_name, 2, p.price
-FROM orders AS o
-JOIN products AS p ON p.sku = 'TEA-001'
-WHERE o.order_number = 'DEMO-1003';

@@ -40,10 +40,10 @@ WHERE is_available = TRUE
   AND stock_quantity <= reorder_level
 ORDER BY stock_quantity, product_name;
 
--- Receipt details for one order; replace DEMO-1001 with an order number.
+-- Receipt details for one order; replace the placeholder with an order number from your database.
 SELECT o.order_number, o.customer_name, o.order_status, o.ordered_at,
        oi.product_name_at_sale, oi.quantity, oi.unit_price, oi.line_total
 FROM orders AS o
 JOIN order_items AS oi ON oi.order_id = o.order_id
-WHERE o.order_number = 'DEMO-1001'
+WHERE o.order_number = 'REPLACE-WITH-ORDER-NUMBER'
 ORDER BY oi.order_item_id;

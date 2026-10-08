@@ -1,17 +1,20 @@
 # Daily Grind: Coffee Shop Order Manager
 
-A small interactive portfolio demo for ordering drinks and managing cafe orders.
+An English-language portfolio project with two ways to explore it:
 
-## Features
+1. **Hosted portfolio preview:** The interactive browser demo at `app/index.html` runs on GitHub Pages and saves sample orders in that browser only.
+2. **Local MySQL application:** `local-app/` runs on one computer, reads the menu and stores orders in a MySQL database on that computer.
 
-- Search and filter the sample drink menu.
-- Add drinks to a cart, adjust quantities, and place pickup orders.
-- Track orders through pending, preparing, ready, and completed statuses.
-- Review order counts and completed sales in the management dashboard.
-- Save demo orders in the current browser with `localStorage`.
+Both versions are for demonstration and practice. They do not process payments or send real customer orders to a cafe. The hosted preview cannot connect to a database installed on your personal computer.
 
-## Run
+## Run the local MySQL application
 
-Open `app/index.html` in a browser, or serve the repository with a local static web server.
+See [`local-app/README.md`](local-app/README.md) for the Windows setup steps. You will need Node.js 20 or newer and MySQL Server 8.0 or newer. MySQL Workbench can import the provided schema and sample data.
 
-This is a front-end demo, not a production point-of-sale system. Orders are local to one browser and do not sync between devices. It does not process payments or send orders to a real cafe.
+## Download the database
+
+The [`downloads/daily-grind-mysql.zip`](downloads/daily-grind-mysql.zip) archive contains the database schema, sample menu and orders, reporting queries, and MySQL import guide.
+
+## Important scope
+
+The local app binds only to `127.0.0.1`, so only the same computer can open it. This keeps the initial portfolio project simple and avoids publishing a database or collecting online orders. No Square account, payment credentials, or cloud database is needed.

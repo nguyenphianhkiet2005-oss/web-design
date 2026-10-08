@@ -1,0 +1,16 @@
+{
+  "name": "daily-grind-local",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Local MySQL-backed coffee shop order-management portfolio project",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "dotenv": "^16.5.0",
+    "mysql2": "^3.14.3"
+  }
+}
