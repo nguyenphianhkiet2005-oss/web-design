@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A defensive SOC dashboard for exploring synthetic authentication logs and investigating suspicious sign-in patterns.">
+    <title>SOC Log Analyzer | KNCS</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="app.js" defer></script>
+</head>
+<body>
+    <header class="topbar">
+        <a class="brand" href="../../home.html"><span class="brand-mark">K</span><span>KNCS <small>SECURITY LAB</small></span></a>
+        <a class="back-link" href="../../projects.html">&larr; Portfolio projects</a>
+    </header>
+
+    <main class="page">
+        <section class="intro">
+            <div>
+                <p class="eyebrow">DEFENSIVE SECURITY · AUTHENTICATION MONITORING</p>
+                <h1>SOC Log Analyzer</h1>
+                <p class="intro-copy">Review authentication events, surface suspicious patterns, and inspect the evidence behind each alert.</p>
+            </div>
+            <div class="safe-label"><span aria-hidden="true"></span> Synthetic data · Browser-only analysis</div>
+        </section>
+
+        <section class="toolbar" aria-label="Load authentication logs">
+            <div class="toolbar-copy">
+                <h2>Log source</h2>
+                <p>Use the built-in example or load a CSV with the documented columns.</p>
+            </div>
+            <div class="toolbar-actions">
+                <button class="button button-secondary" id="loadSample" type="button">Load sample data</button>
+                <label class="button button-primary" for="fileInput">Upload CSV</label>
+                <input id="fileInput" type="file" accept=".csv,text/csv">
+            </div>
+        </section>
+        <p class="message" id="message" role="status" aria-live="polite"></p>
+
+        <section class="metrics" aria-label="Log summary">
+            <article class="metric-card"><span>Total events</span><strong id="totalEvents">0</strong><small>Valid authentication records</small></article>
+            <article class="metric-card"><span>Failed logins</span><strong id="failedEvents">0</strong><small>Unsuccessful sign-in attempts</small></article>
+            <article class="metric-card"><span>Source addresses</span><strong id="sourceCount">0</strong><small>Unique source IP addresses</small></article>
+            <article class="metric-card metric-alert"><span>Alerts</span><strong id="alertCount">0</strong><small>Patterns for analyst review</small></article>
+        </section>
+
+        <section class="panel">
+            <div class="panel-heading">
+                <div>
+                    <p class="eyebrow">DETECTION RESULTS</p>
+                    <h2>Alerts to investigate</h2>
+                </div>
+                <label class="filter-label" for="severityFilter">Severity
+                    <select id="severityFilter">
+                        <option value="all">All severities</option>
+                        <option value="high">High</option>
+                        <option value="medium">Medium</option>
+                    </select>
+                </label>
+            </div>
+            <div class="alerts" id="alerts" aria-live="polite"></div>
+        </section>
+
+        <section class="panel">
+            <div class="panel-heading log-heading">
+                <div>
+                    <p class="eyebrow">EVENT REVIEW</p>
+                    <h2>Authentication events</h2>
+                </div>
+                <label class="search-label" for="eventSearch">Filter events
+                    <input id="eventSearch" type="search" placeholder="IP, username, result...">
+                </label>
+            </div>
+            <div class="table-wrap">
+                <table>
+                    <thead><tr><th>Timestamp (UTC)</th><th>Source IP</th><th>Username</th><th>Event</th><th>Result</th></tr></thead>
+                    <tbody id="eventsBody"></tbody>
+                </table>
+                <p class="empty-state" id="emptyEvents" hidden>No events match this filter.</p>
+            </div>
+        </section>
+
+        <details class="methodology">
+            <summary>Detection logic and safe-use notes</summary>
+            <div>
+                <p>Rules in this learning demo flag five or more failed logins for the same username and source IP, five or more distinct usernames with failed logins from one source IP, and a successful login after at least three failures for the same username and source within 30 minutes.</p>
+                <p>These are simple heuristics, not proof of compromise. Real SOC investigations require environment context, validated telemetry, tuning, and a documented response process. This demo only analyzes data selected by the user in this browser tab; it does not transmit or persist logs.</p>
+            </div>
+        </details>
+    </main>
+
+    <footer>Portfolio learning project · Use only synthetic or authorized log data</footer>
+</body>
+</html>
